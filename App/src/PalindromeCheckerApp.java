@@ -1,6 +1,6 @@
-public class PalindromeCheckerApp {
-    public static boolean isPalindrome(String input) {
-        if (input == null) return false;
+class PalindromeChecker {
+    public boolean checkPalindrome(String input) {
+        if (input == null || input.isBlank()) return false;
         String clean = input.replaceAll("\\s+", "").toLowerCase();
         int left = 0;
         int right = clean.length() - 1;
@@ -13,8 +13,13 @@ public class PalindromeCheckerApp {
         }
         return true;
     }
+}
+public class PalindromeCheckerApp {
     public static void main(String[] args) {
-        String test = "Race Car";
-        System.out.println("Is '" + test + "' a palindrome? " + isPalindrome(test));
+        PalindromeChecker service = new PalindromeChecker();
+        String phrase = "Taco Cat";
+        String sentence = "A man a plan a canal Panama";
+        System.out.println("Checking phrase: '" + phrase + "' -> " + service.checkPalindrome(phrase));
+        System.out.println("Checking sentence: '" + sentence + "' -> " + service.checkPalindrome(sentence));
     }
 }
