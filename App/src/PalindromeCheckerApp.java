@@ -1,17 +1,20 @@
 public class PalindromeCheckerApp {
-    public static boolean isPalindrome(String s, int start, int end) {
-        if (start >= end) {
-            return true;
+    public static boolean isPalindrome(String input) {
+        if (input == null) return false;
+        String clean = input.replaceAll("\\s+", "").toLowerCase();
+        int left = 0;
+        int right = clean.length() - 1;
+        while (left < right) {
+            if (clean.charAt(left) != clean.charAt(right)) {
+                return false;
+            }
+            left++;
+            right--;
         }
-
-        if (s.charAt(start) != s.charAt(end)) {
-            return false;
-        }
-        return isPalindrome(s, start + 1, end - 1);
+        return true;
     }
     public static void main(String[] args) {
-        String input = "racecar";
-        boolean result = isPalindrome(input, 0, input.length() - 1);
-        System.out.println("Is '" + input + "' a palindrome? " + result);
+        String test = "Race Car";
+        System.out.println("Is '" + test + "' a palindrome? " + isPalindrome(test));
     }
 }
