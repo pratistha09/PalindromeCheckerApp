@@ -1,15 +1,28 @@
-public class PalindromeCheckerApp{
+import java.util.Scanner;
+public class PalindromeCheckerApp {
     public static void main(String[] args) {
-        String str = "racecar";
-        System.out.print("Input text: " + str);
-        boolean isPalindrome = true;
-        int len = str.length();
-        for(int i= 0; i<len/2; i++) {
-            if (str.charAt(i) != str.charAt(len - 1 - i)) {
-                isPalindrome = false;
-                break;
-            }
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Enter string: ");
+        String input = scanner.nextLine();
+        if (isPalindrome(input)) {
+            System.out.println("It is a palindrome.");
+        } else {
+            System.out.println("It is not a palindrome.");
         }
-        System.out.println("\nIs it a Palindrome ? : " + isPalindrome);
+        scanner.close();
+    }
+    public static boolean isPalindrome(String str) {
+        if (str == null || str.isEmpty()) return true;
+        char[] charArray = str.toLowerCase().toCharArray();
+        int left = 0;
+        int right = charArray.length - 1;
+        while (left < right) {
+            if (charArray[left] != charArray[right]) {
+                return false;
+            }
+            left++;
+            right--;
+        }
+        return true;
     }
 }
